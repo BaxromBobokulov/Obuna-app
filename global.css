@@ -74,7 +74,7 @@
     }
 
     .home-user {
-        @apply flex-row items-center;
+        @apply mr-3 min-w-0 flex-1 flex-row items-center;
     }
 
     .home-avatar {
@@ -82,7 +82,7 @@
     }
 
     .home-user-name {
-        @apply ml-4 text-2xl font-sans-bold text-primary;
+        @apply ml-4 shrink text-2xl font-sans-bold text-primary;
     }
 
     .home-add-icon {
@@ -257,8 +257,9 @@
         @apply mb-7 flex-row items-center gap-3;
     }
 
+    /* Same asymmetric corners as .home-balance-card — the brand motif. */
     .auth-logo-mark {
-        @apply relative size-14 items-center justify-center rounded-2xl bg-accent;
+        @apply relative size-14 items-center justify-center rounded-tl-lg rounded-tr-3xl rounded-bl-3xl rounded-br-none bg-accent;
     }
 
     .auth-logo-mark-text {
@@ -270,11 +271,11 @@
     }
 
     .auth-wordmark-sub {
-        @apply -mt-1 text-xs font-sans-semibold uppercase tracking-[1px] text-muted-foreground;
+        @apply mt-0.5 text-xs font-sans-semibold uppercase tracking-[1px] text-muted-foreground;
     }
 
     .auth-title {
-        @apply text-3xl font-sans-bold text-primary;
+        @apply text-center text-3xl font-sans-bold text-primary;
     }
 
     .auth-subtitle {
@@ -297,12 +298,140 @@
         @apply text-sm font-sans-semibold text-primary;
     }
 
+    .auth-label-row {
+        @apply flex-row items-center justify-between;
+    }
+
+    .auth-label-action {
+        @apply text-sm font-sans-semibold text-accent;
+    }
+
     .auth-input {
-        @apply rounded-2xl border border-border bg-background px-4 py-4 text-base font-sans-medium text-primary;
+        @apply flex-row items-center rounded-2xl border border-black/15 bg-background;
+    }
+
+    .auth-input-text {
+        @apply flex-1 px-4 py-4 text-base font-sans-medium text-primary;
+    }
+
+    .auth-input-accessory {
+        @apply pl-1 pr-4;
+    }
+
+    .auth-input-focused {
+        @apply border-accent;
     }
 
     .auth-input-error {
         @apply border-destructive;
+    }
+
+    .auth-helper-sm {
+        @apply text-xs font-sans-medium text-muted-foreground;
+    }
+
+    .auth-notice {
+        @apply flex-row items-start gap-2 rounded-2xl border p-3;
+    }
+
+    .auth-notice-error {
+        @apply border-destructive/20 bg-destructive/10;
+    }
+
+    .auth-notice-success {
+        @apply border-success/20 bg-success/10;
+    }
+
+    .auth-notice-text {
+        @apply flex-1 text-sm font-sans-medium;
+    }
+
+    .auth-checks {
+        @apply flex-row flex-wrap gap-2;
+    }
+
+    .auth-check {
+        @apply flex-row items-center gap-1 rounded-full border border-border bg-background px-3 py-1;
+    }
+
+    .auth-check-passed {
+        @apply border-success/30 bg-success/10;
+    }
+
+    .auth-check-failed {
+        @apply border-destructive/30 bg-destructive/10;
+    }
+
+    .auth-password-issue {
+        @apply flex-row items-start gap-2 rounded-xl bg-destructive/10 px-3 py-2.5;
+    }
+
+    .auth-password-issue-text {
+        @apply flex-1 text-sm font-sans-medium text-destructive;
+    }
+
+    .auth-check-text {
+        @apply text-xs font-sans-semibold text-muted-foreground;
+    }
+
+    .auth-code-row {
+        @apply flex-row justify-between gap-2;
+    }
+
+    .auth-code-cell {
+        @apply h-14 flex-1 items-center justify-center rounded-2xl border border-black/15 bg-background;
+    }
+
+    .auth-code-cell-filled {
+        @apply border-primary/40;
+    }
+
+    .auth-code-cell-active {
+        @apply border-accent;
+    }
+
+    .auth-code-digit {
+        @apply text-2xl font-sans-bold text-primary;
+    }
+
+    .auth-code-hidden-input {
+        @apply absolute inset-0 opacity-0;
+    }
+
+    .auth-legal {
+        @apply text-center text-xs font-sans-medium text-muted-foreground;
+    }
+
+    .auth-trust-row {
+        @apply mt-8 flex-row items-center justify-center gap-1.5;
+    }
+
+    .auth-trust-text {
+        @apply text-xs font-sans-medium text-muted-foreground;
+    }
+
+    .auth-google-button {
+        @apply flex-row items-center justify-center gap-3 rounded-2xl border border-black/15 bg-background py-4;
+    }
+
+    .auth-google-button-text {
+        @apply text-base font-sans-semibold text-primary;
+    }
+
+    .settings-account {
+        @apply flex-row items-center gap-4 rounded-2xl border border-border bg-card p-4;
+    }
+
+    .settings-avatar {
+        @apply size-14 rounded-full;
+    }
+
+    .settings-logout {
+        @apply mt-6 flex-row items-center justify-center gap-2 rounded-2xl border border-destructive/20 bg-destructive/10 py-4;
+    }
+
+    .settings-logout-text {
+        @apply text-base font-sans-bold text-destructive;
     }
 
     .auth-error {
@@ -322,7 +451,7 @@
     }
 
     .auth-button-text {
-        @apply text-base font-sans-bold text-primary;
+        @apply text-base font-sans-bold text-white;
     }
 
     .auth-secondary-button {

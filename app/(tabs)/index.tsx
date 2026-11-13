@@ -3,7 +3,7 @@ import { styled } from "nativewind";
 import { Text, View, Image, FlatList } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
-import { HOME_BALANCE, HOME_SUBSCRIPTIONS, HOME_USER, UPCOMING_SUBSCRIPTIONS } from "@/constants/data";
+import { HOME_BALANCE, HOME_SUBSCRIPTIONS, UPCOMING_SUBSCRIPTIONS } from "@/constants/data";
 import { icons } from "@/constants/icon";
 import { components } from "@/constants/theme";
 import { formatCurrency } from "@/lib/utils";
@@ -12,10 +12,14 @@ import ListHeading from "@/components/ListHeading";
 import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
 import SubscriptionsCard from "@/components/SubscriptionsCard";
 import { useState } from "react";
+import { useUser } from "@clerk/expo";
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
+  const { user } = useUser();
+  // Only the "First name" the user entered at sign-up — never last name, email or other sources.
+  const displayName = user?.firstName?.trim() ?? "";
 
   return (
     <SafeAreaView className="flex-1 p-5 pb-0 bg-background" edges={["top"]}>
@@ -26,8 +30,11 @@ export default function App() {
             <>
               <View className="home-header">
                 <View className="home-user">
-                  <Image source={images.avatar} className="home-avatar" />
-                  <Text className="home-user-name">{HOME_USER.name}</Text>
+                  <Image
+                    source={user?.hasImage ? { uri: user.imageUrl } : images.avatar}
+                    className="home-avatar"
+                  />
+                  <Text className="home-user-name" numberOfLines={1}>{displayName}</Text>
                 </View>
 
                 <Image source={icons.add} className="home-add-icon" />
